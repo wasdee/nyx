@@ -29,6 +29,8 @@ in
     ./hardware-configuration.nix
     inputs.hydenix.lib.nixOsModules
     ./modules/system
+    ./machines/x1-extreme/default.nix
+
 
     # === GPU-specific configurations ===
 
@@ -39,6 +41,7 @@ in
 
     # For NVIDIA setups
     inputs.hydenix.inputs.nixos-hardware.nixosModules.common-gpu-nvidia
+
 
     # For AMD setups
     # inputs.hydenix.inputs.nixos-hardware.nixosModules.common-gpu-amd
@@ -62,7 +65,6 @@ in
       inherit inputs;
     };
 
-    #! EDIT THIS USER (must match users defined below)
     users."ben" =
       { ... }:
       {

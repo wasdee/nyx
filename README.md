@@ -34,10 +34,12 @@ System wide config is managed through nix and nix modules everything else is man
 - Theme: [Night fox](https://github.com/EdenEast/nightfox.nvim/blob/main/extra/carbonfox/base16.yaml) + [Sylix](https://github.com/danth/stylix) for easy system-wide colorscheming
 - Development environments: [Devenv](https://github.com/cachix/devenv) + [Direnv](https://github.com/nix-community/nix-direnv)
 
+
 ## Credit
 
 Special thanks to many of the community members without them this config woudn't be possible. Some of them are:
 
+- [Ayoub](https://github.com/ayoub)
 - [Misterio77](https://github.com/Misterio77/nix-config)
 - [Aylur](https://github.com/Aylur/dotfiles)
 - [hlissner](https://github.com/hlissner/dotfiles)

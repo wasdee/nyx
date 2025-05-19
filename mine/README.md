@@ -1,0 +1,1 @@
+https://borretti.me/article/nixos-for-the-impatient#postinstall

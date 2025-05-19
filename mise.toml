@@ -7,3 +7,9 @@ run = "sudo nixos-rebuild test -I nixos-config=./mine/configuration.nix --use-re
 
 [tasks.fmt]
 run = "nix fmt"
+
+[tasks."hw"]
+run = "sudo nixos-generate-config --show-hardware-config > hardware-configuration.nix"
+
+[tasks.rebuild]
+run = "sudo nixos-rebuild switch --flake ."

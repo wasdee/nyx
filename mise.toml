@@ -1,0 +1,9 @@
+
+[tasks.switch]
+run = "sudo nixos-rebuild switch -I nixos-config=./mine/configuration.nix --use-remote-sudo --upgrade"
+
+[tasks.test]
+run = "sudo nixos-rebuild test -I nixos-config=./mine/configuration.nix --use-remote-sudo --upgrade" 
+
+[tasks.fmt]
+run = "nix fmt"

@@ -15,6 +15,11 @@
   hydenix.hm = {
     #! Important options
     enable = true;
+    git = {
+        enable = true; # enable git module
+        name = "Nutchanon Ninyawee"; # git user name eg "John Doe"
+        email = "ninyawee@hey.com"; # git user email eg "john.doe@example.com"
+      };
 
     /*
       ! Below are defaults

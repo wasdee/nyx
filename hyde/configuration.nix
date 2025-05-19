@@ -37,9 +37,8 @@ in
       Most common drivers are below, but you can see more options here: https://github.com/NixOS/nixos-hardware
     */
 
-    #! EDIT THIS SECTION
     # For NVIDIA setups
-    # inputs.hydenix.inputs.nixos-hardware.nixosModules.common-gpu-nvidia
+    inputs.hydenix.inputs.nixos-hardware.nixosModules.common-gpu-nvidia
 
     # For AMD setups
     # inputs.hydenix.inputs.nixos-hardware.nixosModules.common-gpu-amd
@@ -64,7 +63,7 @@ in
     };
 
     #! EDIT THIS USER (must match users defined below)
-    users."hydenix" =
+    users."ben" =
       { ... }:
       {
         imports = [
@@ -80,10 +79,9 @@ in
   hydenix = {
     enable = true; # Enable the Hydenix module
 
-    #! EDIT THESE VALUES
-    hostname = "hydenix"; # Change to your preferred hostname
-    timezone = "America/Vancouver"; # Change to your timezone
-    locale = "en_CA.UTF-8"; # Change to your preferred locale
+    hostname = "ben-laptop"; # Change to your preferred hostname
+    timezone = "Asia/Bangkok"; # Change to your timezone
+    locale = "en_US.UTF-8"; # Change to your preferred locale
 
     /*
       Optionally edit the below values, or leave to use hydenix defaults
@@ -109,10 +107,9 @@ in
     */
   };
 
-  #! EDIT THESE VALUES (must match users defined above)
-  users.users.hydenix = {
+  users.users.ben = {
     isNormalUser = true; # Regular user account
-    initialPassword = "hydenix"; # Default password (CHANGE THIS after first login with passwd)
+    initialPassword = "password"; # Default password (CHANGE THIS after first login with passwd)
     extraGroups = [
       "wheel" # For sudo access
       "networkmanager" # For network management

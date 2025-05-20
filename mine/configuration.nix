@@ -267,6 +267,7 @@
     eza
     atool
     zstd
+    xorg.xhost
   ];
 
   programs.git = {

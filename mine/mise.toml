@@ -1,0 +1,6 @@
+[tasks.test-zedsdk]
+run = """
+docker pull stereolabs/zed:3.7-gl-devel-cuda11.4-ubuntu20.04 
+xhost +si:localuser:root 
+docker run -it  --device nvidia.com/gpu=all --privileged -e DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix stereolabs/zed:3.7-gl-devel-cuda11.4-ubuntu20.04
+"""

@@ -118,7 +118,7 @@
   users.users.ben = {
     isNormalUser = true;
     description = "ben";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" ];
     packages = with pkgs; [
     #  thunderbird
       vscode

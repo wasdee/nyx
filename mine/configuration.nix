@@ -55,9 +55,17 @@
   };
 
 
-  hardware.graphics.enable = true;
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true; # for nvidia docker
+  };
   services.xserver.videoDrivers = [ "nvidia" ];
-  hardware.nvidia.open = true;  # see the note above
+  hardware.nvidia = {
+    modesetting.enable = true;
+    open = true;
+    nvidiaSettings = true;
+    package = config.boot.kernelPackages.nvidiaPackages.production;
+  };
   # https://wiki.nixos.org/wiki/NVIDIA#Disabling
   hardware.nvidia.prime = {
     intelBusId = "PCI:0:2:0";
@@ -272,7 +280,10 @@
   };
   programs.git.lfs.enable = true;
 
-  virtualisation.docker.enable = true;
+  virtualisation.docker = {
+    enable = true;
+    enableNvidia = true;
+  };
 
   virtualisation.docker.rootless = {
     enable = true;

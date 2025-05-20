@@ -282,9 +282,11 @@
 
   virtualisation.docker = {
     enable = true;
+    enableOnBoot = true;
+    package = pkgs.docker; # min req docker_25 docker now is at 27
   };
   hardware.nvidia-container-toolkit.enable = true;
-
+  # https://discourse.nixos.org/t/nvidia-docker-container-runtime-doesnt-detect-my-gpu/51336/14
   virtualisation.docker.rootless = {
     enable = true;
     setSocketVariable = true;

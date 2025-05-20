@@ -269,7 +269,12 @@
   };
   programs.git.lfs.enable = true;
 
+  virtualisation.docker.enable = true;
 
+  virtualisation.docker.rootless = {
+    enable = true;
+    setSocketVariable = true;
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

@@ -126,6 +126,7 @@
       windsurf
       code-cursor
       microsoft-edge
+      zed-editor
       #teams
     ];
   };

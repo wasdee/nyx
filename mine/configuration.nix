@@ -18,6 +18,7 @@
       <nixos-hardware/lenovo/thinkpad/x1-extreme>
       ./hardware-configuration.nix
       ./home.nix
+      ./zed.nix
     ];
 
   # Bootloader.
@@ -126,7 +127,7 @@
   users.users.ben = {
     isNormalUser = true;
     description = "ben";
-    extraGroups = [ "networkmanager" "wheel" "docker" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" "plugdev" ];
     packages = with pkgs; [
     #  thunderbird
       vscode
@@ -268,6 +269,7 @@
     atool
     zstd
     xorg.xhost
+    usbutils
   ];
 
   programs.git = {

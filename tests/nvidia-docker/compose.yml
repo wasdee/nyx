@@ -11,8 +11,3 @@ services:
           - driver: cdi
             device_ids:
             - nvidia.com/gpu=all
-
-  # sudo docker run --runtime=nvidia --privileged --rm -ti nvidia/cuda:12.3.1-base-ubuntu20.04 nvidia-smi
-
-  # $ docker run --rm --device nvidia.com/gpu=all ubuntu:latest nvidia-smi
-  # podman run --rm -it --device=nvidia.com/gpu=0 --device=nvidia.com/gpu=1 ubuntu:latest nvidia-smi -L

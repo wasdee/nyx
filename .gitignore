@@ -3,3 +3,5 @@
 *.qcow2
 result
 .git-hooks
+mine/zed_installer.run
+mine/ZED_SDK_Ubuntu24_cuda12.8_tensorrt10.9_v5.0.1.zstd.run

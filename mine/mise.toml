@@ -9,3 +9,4 @@ docker run -it  --device nvidia.com/gpu=all --privileged -e DISPLAY -e XAUTHORIT
   stereolabs/zed:5.0-gl-devel-cuda12.6-ubuntu24.04
 """
 # https://www.perplexity.ai/search/docker-pull-stereolabs-zed-3-7-YSEo9r3vQJ6X2zVfQspXlw
+# https://stereolabs.sfo2.cdn.digitaloceanspaces.com/zedsdk/5.0/ZED_SDK_Ubuntu24_cuda12.8_tensorrt10.9_v5.0.1.zstd.run?_gl=1*1muhtk3*_gcl_au*MTE2ODQ3Nzc0My4xNzQ3NzE4MDQx

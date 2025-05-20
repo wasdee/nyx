@@ -255,7 +255,7 @@
     fd
     eza
     atool
-
+    zstd
   ];
 
   programs.git = {

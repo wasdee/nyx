@@ -231,8 +231,9 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #  wget
+    wget
     # nix-software-center
+    httpie
     television
     nix-search-tv 
     kitty # required for the default Hyprland config
@@ -247,6 +248,14 @@
     nerd-fonts.jetbrains-mono
     zsh
     claude-code
+    lazygit
+    lsd
+    bat
+    ripgrep
+    fd
+    eza
+    atool
+
   ];
 
   programs.git = {

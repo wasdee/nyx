@@ -282,8 +282,8 @@
 
   virtualisation.docker = {
     enable = true;
-    enableNvidia = true;
   };
+  hardware.nvidia-container-toolkit.enable = true;
 
   virtualisation.docker.rootless = {
     enable = true;

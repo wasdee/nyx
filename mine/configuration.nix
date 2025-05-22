@@ -137,6 +137,7 @@
       zed-editor
       helix
       helix-gpt
+      obsidian
       #teams
     ];
   };
@@ -269,6 +270,7 @@
     zstd
     xorg.xhost
     usbutils
+    stow
   ];
 
   programs.git = {

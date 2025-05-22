@@ -16,7 +16,7 @@ run = "sudo nixos-rebuild switch --flake ."
 
 
 [tasks."channel:add"]
-run = "sudo sudo nix-channel --add {{ arg(name='url') }} {{ arg(name='channel_name')"
+run = "sudo sudo nix-channel --add {{ arg(name='url') }} {{ arg(name='channel_name') }}"
 depends_post = ["channel:list"]
 
 [tasks."channel:list"]

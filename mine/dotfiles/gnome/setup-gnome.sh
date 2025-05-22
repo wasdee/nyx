@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # GNOME settings setup script
 
 # Enable dark mode

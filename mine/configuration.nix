@@ -134,7 +134,6 @@
       mqtt-explorer
       windsurf
       code-cursor
-      microsoft-edge
       zed-editor
       helix
       helix-gpt

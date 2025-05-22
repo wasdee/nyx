@@ -20,6 +20,36 @@
       '';
     };
 
+    # GNOME desktop settings
+    dconf.settings = {
+      "org/gnome/desktop/interface" = {
+        gtk-theme = "Adwaita-dark";
+        color-scheme = "prefer-dark";
+      };
+      
+      # Set taskbar favorites
+      "org/gnome/shell" = {
+        favorite-apps = [
+          "firefox.desktop"
+          "org.gnome.Nautilus.desktop"
+          "code.desktop"
+          "org.gnome.Terminal.desktop"
+        ];
+      };
+    };
+
+    # Set default applications
+    xdg.mimeApps = {
+      enable = true;
+      defaultApplications = {
+        "text/html" = "firefox.desktop";
+        "x-scheme-handler/http" = "firefox.desktop";
+        "x-scheme-handler/https" = "firefox.desktop";
+        "x-scheme-handler/about" = "firefox.desktop";
+        "x-scheme-handler/unknown" = "firefox.desktop";
+      };
+    };
+
       # This value determines the Home Manager release that your configuration is 
   # compatible with. This helps avoid breakage when a new Home Manager release 
   # introduces backwards incompatible changes. 

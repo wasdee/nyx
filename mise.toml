@@ -1,6 +1,21 @@
 
 [tasks.switch]
 run = "sudo nixos-rebuild switch -I nixos-config=./mine/configuration.nix --use-remote-sudo --upgrade"
+depends_post = "restart"
+
+[tasks.restart]
+run = """
+#!/usr/bin/env bash
+echo "Do you want to restart the system? (y/n)"
+read answer
+if [ "$answer" == "y" ]; then
+    echo "Restarting the system..."
+    sudo systemctl reboot
+else
+    echo "System restart cancelled."
+fi
+"""
+
 
 [tasks.test]
 run = "sudo nixos-rebuild test -I nixos-config=./mine/configuration.nix --use-remote-sudo --upgrade" 

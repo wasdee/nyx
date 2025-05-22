@@ -1,0 +1,1 @@
+- use `mise run switch` to apply config

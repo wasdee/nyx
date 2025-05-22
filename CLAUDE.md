@@ -4,64 +4,82 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This repository ("nyx") is a personal NixOS and Home Manager configuration using Nix flakes. It declaratively manages system-level configurations for multiple machines and user environments.
+This repository ("nyx") contains two NixOS configurations:
 
-### Machines
-- **x1**: Lenovo X1 Carbon Gen 9 (laptop)
-- **kraken**: Custom desktop with Ryzen 5 3600 and RTX 2060
+1. **Main Configuration** (`/`): A comprehensive flake-based NixOS and Home Manager configuration for multiple machines
+2. **Simplified Configuration** (`/mine`): A minimal traditional NixOS configuration for learning and experimentation
+
+### Current Focus: `/mine` Directory
+The `/mine` directory contains a simplified NixOS setup using traditional configuration files:
+- **Hostname**: ben-laptop (Lenovo X1 Extreme with Intel iGPU + NVIDIA dGPU)
+- **User**: ben
+- **Desktop**: GNOME with Hyprland available
+- **Special Hardware**: ZED SDK camera support with custom udev rules
 
 ## Common Commands
 
-### System Management
+### For `/mine` Directory (Simplified Setup)
+- `sudo nixos-rebuild switch`: Apply system configuration
+- `sudo nixos-rebuild switch --specialisation on-the-go`: Switch to power-saving mode (NVIDIA Prime offload)
+- `mise run test-zedsdk`: Test ZED SDK Docker setup with GPU passthrough
+
+### For Main Configuration (Root Directory)
 - `mise run n [machine]` or `mise run build-switch-nixos [machine]`: Build and switch NixOS configuration
 - `mise run h [machine] [user]` or `mise run build-switch-homemanager [machine] [user]`: Build and switch Home Manager configuration
 - `mise run all` or `mise run build-switch-nix-and-homemanager`: Build both NixOS and Home Manager
-
-### Flake Management
 - `mise run upp`: Update all flake inputs
-- `mise run up [targets]`: Update specific flake inputs (e.g., `mise run up nixpkgs home-manager`)
-
-### Maintenance
-- `mise run gc`: Garbage collect old generations (both user and system)
+- `mise run up [targets]`: Update specific flake inputs
+- `mise run gc`: Garbage collect old generations
 - `mise run fmt`: Format all Nix files using treefmt
 
 ## Architecture
 
-The configuration is organized as follows:
+### `/mine` Directory Structure
+- **`configuration.nix`**: Main system configuration with hardware-specific settings
+- **`hardware-configuration.nix`**: Hardware scan results (auto-generated)
+- **`home.nix`**: Home Manager integration and user-specific settings
+- **`zed.nix`**: ZED SDK camera udev rules and hardware support
 
+### Main Configuration Structure (Root Directory)
 - **`/flake.nix`**: Main flake defining nixosConfigurations for machines and homeConfigurations for users
-- **`/machines/`**: Machine-specific NixOS configurations
-  - Each machine has its own directory with hardware config, services, and specific modules
-- **`/homes/`**: User-specific Home Manager configurations (currently only "orbit" user)
-- **`/misc/`**: Shared modules split into:
-  - `nixos/`: System-level modules (apps, common, hardware)
-  - `hm/`: Home Manager modules (browsers, desktops, media, shells, terminals, etc.)
+- **`/machines/`**: Machine-specific NixOS configurations (x1, kraken)
+- **`/homes/`**: User-specific Home Manager configurations (orbit user)
+- **`/misc/`**: Shared modules split into nixos/ and hm/ subdirectories
 - **`/lib/`**: Custom library functions
-- **`/secrets/`**: SOPS-encrypted secrets for each machine and user
-- **`/assets/`**: Static resources (icons, Plymouth themes, screenshots)
+- **`/secrets/`**: SOPS-encrypted secrets
+- **`/assets/`**: Static resources (icons, themes, screenshots)
 
-### Desktop Environment
-Uses Hyprland as the primary window manager with machine-specific configurations in `/misc/hm/desktops/hyprland/device/`.
+## Key Configuration Features
 
-## Key Configuration Patterns
+### Hardware Support
+- **NVIDIA Prime**: Dual GPU setup with Intel iGPU + NVIDIA dGPU
+- **Specialization**: "on-the-go" mode for battery-optimized NVIDIA offload
+- **ZED Camera**: Custom udev rules for Stereolabs ZED SDK cameras
+- **Docker + NVIDIA**: Container toolkit enabled for GPU passthrough
 
-### Creating New Machine Configurations
-1. Add machine directory under `/machines/`
-2. Create `default.nix` importing hardware-configuration.nix and relevant modules
-3. Add entry to flake.nix under `nixosConfigurations`
-4. Add corresponding Home Manager configuration under `homeConfigurations`
+### Development Environment
+- **Editors**: VS Code, Cursor, Windsurf, Zed, Helix
+- **Shell**: Zsh with mise for tool management
+- **Security**: 1Password with SSH agent integration
+- **Version Control**: Git with LFS support
 
-### Home Manager Modules
-Modules in `/misc/hm/` are typically structured with:
-- `default.nix`: Module entry point with options definition
-- Config files in subdirectories when needed
-- Machine-specific overrides in `device/` subdirectories
+### Container Support
+- **Docker**: Rootless mode enabled with NVIDIA container toolkit
+- **ZED SDK Testing**: Pre-configured Docker command for camera testing
 
-### Secrets Management
-SOPS is used for secret management. Secrets are stored in `/secrets/` as YAML files per machine/user.
+## Development Workflow
 
-## Development Notes
-- Forked a Nix config repo, learning the structure and trying to adapt it to my liking
+### Working with `/mine` Configuration
+1. Edit configuration files directly (`configuration.nix`, `home.nix`, `zed.nix`)
+2. Test changes with `sudo nixos-rebuild switch`
+3. Use specializations for different hardware profiles
 
-## Workflow Notes
-- Let start small from `/etc/nixos` to `./mine`
+### ZED SDK Development
+- Use `mise run test-zedsdk` to test camera setup
+- Udev rules are automatically applied from `zed.nix`
+- Docker containers have GPU access for development
+
+## Notes
+- The `/mine` directory represents a learning approach: "start small from `/etc/nixos` to `./mine`"
+- Main configuration uses flakes and modular architecture for production setups
+- Current development focuses on the simplified `/mine` setup for experimentation

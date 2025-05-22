@@ -272,7 +272,10 @@
     usbutils
     stow
     google-chrome
+    google-fonts
   ];
+
+
 
   programs.git = {
     enable = true;

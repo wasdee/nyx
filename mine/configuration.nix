@@ -12,6 +12,11 @@
 #     sha256 = "xiqF1mP8wFubdsAQ1BmfjzCgOD3YZf7EGWl9i69FTls=";
 #   }) {};
 # in
+let
+  fontsOverlay = import (
+    builtins.fetchTarball https://github.com/Soft/nix-google-fonts-overlay/archive/master.tar.gz
+  );
+in
 {
   imports =
     [ # Include the results of the hardware scan.
@@ -257,6 +262,7 @@
     python3
     uv
     mise
+    nerd-fonts.ubuntu-mono
     nerd-fonts.jetbrains-mono
     zsh
     claude-code
@@ -273,7 +279,30 @@
     stow
     google-chrome
     google-fonts
+    ubuntu_font_family
   ];
+
+nixpkgs.overlays = [ fontsOverlay ];
+
+
+  fonts = {
+  enableDefaultPackages = true;
+  packages = with pkgs; [ 
+    ubuntu_font_family
+    google-fonts-prompt
+    google-fonts-bai-jamjuree
+    nerd-fonts.ubuntu-mono
+    nerd-fonts.jetbrains-mono
+  ];
+
+  fontconfig = {
+    defaultFonts = {
+      serif = [  "Liberation Serif" "Prompt" ];
+      sansSerif = [ "Ubuntu" "Prompt" ];
+      monospace = [ "Ubuntu Mono" ];
+    };
+  };
+};
 
 
 

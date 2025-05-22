@@ -13,3 +13,14 @@ run = "sudo nixos-generate-config --show-hardware-config > hardware-configuratio
 
 [tasks.rebuild]
 run = "sudo nixos-rebuild switch --flake ."
+
+
+[tasks."channel:add"]
+run = "sudo sudo nix-channel --add {{ arg(name='url') }} {{ arg(name='channel_name')"
+depends_post = ["channel:list"]
+
+[tasks."channel:list"]
+run = "sudo nix-channel --list"
+
+[tasks."channel:update"]
+run = "sudo nix-channel --update"

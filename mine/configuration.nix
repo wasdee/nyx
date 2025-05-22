@@ -17,7 +17,6 @@
     [ # Include the results of the hardware scan.
       <nixos-hardware/lenovo/thinkpad/x1-extreme>
       ./hardware-configuration.nix
-      ./home.nix
       ./zed.nix
     ];
 

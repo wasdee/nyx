@@ -270,6 +270,7 @@
     xorg.xhost
     usbutils
     stow
+    google-chrome
   ];
 
   programs.git = {

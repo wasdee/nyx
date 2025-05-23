@@ -285,6 +285,7 @@ in
     google-fonts
     ubuntu_font_family
     just sops age just nixfmt disko
+    bun
     
   ];
 

@@ -244,6 +244,10 @@ in
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
+  virtualisation.virtualbox.host.enable = true;
+  users.extraGroups.vboxusers.members = [ "ben" ];
+  virtualisation.virtualbox.host.enableExtensionPack = true;
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
@@ -280,7 +284,10 @@ in
     google-chrome
     google-fonts
     ubuntu_font_family
+    just sops age just nixfmt disko
+    
   ];
+
 
 nixpkgs.overlays = [ fontsOverlay ];
 
